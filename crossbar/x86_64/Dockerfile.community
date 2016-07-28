@@ -1,4 +1,4 @@
-FROM python:2.7-alpine
+FROM python:3-alpine
 
 MAINTAINER The Crossbar.io Project <support@crossbario.com>
 
@@ -12,8 +12,7 @@ RUN apk --update upgrade \
     && apk add libffi \
     && apk add --virtual build-dependencies \
         build-base \
-        python-dev \
-        py-pip \
+        python3-dev \
         libffi-dev \
         openssl-dev \
         linux-headers \
@@ -46,7 +45,6 @@ RUN apk --update upgrade \
 # initialize a Crossbar.io node
 COPY ./node/ /node/
 RUN chown -R crossbar:crossbar /node
-
 
 # make /node a volume to allow external configuration
 VOLUME /node
